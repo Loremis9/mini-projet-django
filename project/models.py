@@ -5,6 +5,7 @@ from django.db import models
 
 
 class User(models.Model):
+    name = models.CharField(max_length=50,default="")
     email = models.EmailField()
     is_manager = models.BooleanField(default=False)
 
@@ -40,7 +41,7 @@ class Projet(models.Model):
 
 class Task(models.Model):
     # id projet foreign key
-    projet = models.ForeignKey(Projet, on_delete=models.CASCADE, default=0)
+    projet = models.ForeignKey(Projet, on_delete=models.CASCADE, default=1)
     subtaskof = models.IntegerField()
     task_name = models.CharField(max_length=50)
     task_description = models.CharField(max_length=500)
