@@ -5,12 +5,11 @@ from django.db import models
 
 
 class User(models.Model):
-    name = models.CharField(max_length=50, default="")
     email = models.EmailField()
     is_manager = models.BooleanField(default=False)
 
     def __str__(self):
-        print(self.name)
+        return self.email
 
 
 class Leaves(models.Model):
@@ -22,14 +21,21 @@ class Leaves(models.Model):
 class Statu(models.Model):
     name = models.CharField(max_length=150)
 
+    def __str__(self):
+        return self.name
+
 
 class Projet(models.Model):
+    name = models.CharField(max_length=50,default='valeur')
     start_date = models.DateField()
     end_date = models.DateField()
     # status_id foreign_key
     status = models.ForeignKey(Statu, on_delete=models.CASCADE, default="1")
     # manager_id foreign key
     user = models.ForeignKey(User, on_delete=models.CASCADE,default="")
+
+    def __str__(self):
+        return self.name
 
 
 class Task(models.Model):
@@ -46,7 +52,8 @@ class Task(models.Model):
     duration = models.IntegerField()
     completion_rate = models.DecimalField(max_length=100,decimal_places=2,max_digits=3)
 
-
+    def __str__(self):
+        return self.task_name
 
 
 
