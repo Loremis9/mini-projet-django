@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*ujlmo71e_l0kkghj_qr7$33)%%*m^djn49efo)x)z=%fbz0f6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','172.26.191.143','192.168.56.1','localhost']
+ALLOWED_HOSTS = ['127.0.0.1', '172.26.191.143', '192.168.56.1', 'localhost']
 
 
 # Application definition
@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'PMDB',
+        'NAME': 'PMDBB',
         'USERNAME': 'root',
         'PASSWORD': 'password',
         'HOST': '127.0.0.1',

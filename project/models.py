@@ -3,37 +3,55 @@ from django.db import models
 
 # Create your models here.
 
-class projet(models.Model):
+
+class User(models.Model):
+    name = models.CharField(max_length=50, default="")
+    email = models.EmailField()
+    is_manager = models.BooleanField(default=False)
+
+    def __str__(self):
+        print(self.name)
+
+
+class Leaves(models.Model):
+    start_date = models.DateField()
+    end_date = models.DateField()
+    user = models.ManyToManyField(User, default="")
+
+
+class Statu(models.Model):
+    name = models.CharField(max_length=150)
+
+
+class Projet(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     # status_id foreign_key
+    status = models.ForeignKey(Statu, on_delete=models.CASCADE, default="1")
     # manager_id foreign key
+    user = models.ForeignKey(User, on_delete=models.CASCADE,default="")
 
 
-class task(models.Model):
+class Task(models.Model):
     # id projet foreign key
+    projet = models.ForeignKey(Projet, on_delete=models.CASCADE, default=0)
     subtaskof = models.IntegerField()
     task_name = models.CharField(max_length=50)
     task_description = models.CharField(max_length=500)
-    # task_owner foreign_key
+    # task_owner foreign_key user
+    user = models.ForeignKey(User, on_delete=models.CASCADE,default="")
     # status_id foreign_key
+    status = models.ForeignKey(Statu, on_delete=models.CASCADE,default="1")
     start_date = models.DateField()
     duration = models.IntegerField()
     completion_rate = models.DecimalField(max_length=100,decimal_places=2,max_digits=3)
 
 
-class user(models.Model):
-    email = models.EmailField()
-    is_manager = models.BooleanField(default=False)
-#     projet_id foreign key
 
-class statu(models.Model):
-    name = models.CharField(max_length=150)
+
 
 """
 models qui sert aux vacances congès maladie etc ...
 """
-class leaves(models.Model):
-    start_date = models.DateField()
-    end_date = models.DateField()
-    # user_id foreign_key
+
+

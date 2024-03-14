@@ -1,8 +1,8 @@
 from django.contrib import admin
-from project.models import projet, task, user, statu
+from project.models import Projet, Task, User, Statu
 
 # Register your models here.
-admin.site.register(projet)
-admin.site.register(task)
-admin.site.register(user)
-admin.site.register(statu)
+admin.site.register(Projet)
+admin.site.register(Task)
+admin.site.register(User)
+admin.site.register(Statu)
